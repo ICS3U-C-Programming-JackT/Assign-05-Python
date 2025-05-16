@@ -85,7 +85,7 @@ def open_shop(user_money):
 
     if choice == "":
         print("You walk away empty-handed... for now.")
-        return None, user_money
+        return "N/A", user_money
 
     if choice in prices:
         price = prices[choice]
@@ -114,7 +114,7 @@ def roulette(bet, item):
         c_print(item_data["description"], "white")
         c_print(f"🜲 {item_data['activation_line']}", "blue")
     else:
-        item = None  # Disable item effects if it's invalid
+        item = "N/A"  # Disable item effects if it's invalid
 
     # === Handle loaded dice ===
     if item == "loaded dice":
