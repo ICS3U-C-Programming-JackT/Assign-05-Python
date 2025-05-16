@@ -265,10 +265,21 @@ def game():
             )
             shop_choice = input("> ").strip().lower()
             item = "N/A"
+            
             if shop_choice == "y":
                 item_bought, money = open_shop(user_money)
-                item = item_bought
-                user_money = money
+                found_item = False
+                for item_in_dict in constants.ITEMS:
+                    if item_bought == item_in_dict["name"]:
+                        found_item = True
+                if found_item == True:
+                    item = item_bought
+                    user_money = money
+                else:
+                    item = "N/A"
+
+
+                        
             else:
                 c_print(
                     "You ignore the strange merchant lingering in the corner...",
