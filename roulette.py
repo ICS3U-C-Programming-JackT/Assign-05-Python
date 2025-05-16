@@ -95,10 +95,10 @@ def open_shop(user_money):
             return choice, user_money
         else:
             print("You can't afford that. Maybe next round.")
-            return None, user_money
+            return "N/A", user_money
     else:
         print("That item isn't for sale right now.")
-        return None, user_money
+        return "N/A", user_money
 
 
 def roulette(bet, item):
@@ -270,7 +270,7 @@ def game():
                 item_bought, money = open_shop(user_money)
                 found_item = False
                 for item_in_dict in constants.ITEMS:
-                    if item_bought == item_in_dict["name"]:
+                    if item_bought.lower() == item_in_dict["name"].lower():
                         found_item = True
                 if found_item == True:
                     item = item_bought
