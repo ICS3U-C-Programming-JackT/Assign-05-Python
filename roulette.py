@@ -45,8 +45,8 @@ def redraw_terminal():
 
 # === Prompt Continue ===
 def prompt_continue():
-    for i in constants.CONTINUE_MSG:
-        c_print(i, "yellow", end="", flush=True)
+    for letter in constants.CONTINUE_MSG:
+        c_print(letter, "yellow", end="", flush=True)
         time.sleep(0.1)
     input("")
 
@@ -104,7 +104,7 @@ def open_shop(user_money):
 def roulette(bet, item):
     # === Print item info if it exists ===
     item_data = (
-        next((i for i in constants.ITEMS if i["name"].lower() == item.lower()), None)
+        next((it for it in constants.ITEMS if it["name"].lower() == item.lower()), None)
         if item != "N/A"
         else ""
     )
@@ -149,7 +149,7 @@ def roulette(bet, item):
     spin_duration = random.randint(40, 60)
     current_number = 1
 
-    for i in range(spin_duration):
+    for spin in range(spin_duration):
         redraw_terminal()
         c_print("Spinning...", color="yellow")
         c_print("####|00{}|####".format(current_number), color="magenta")
@@ -265,7 +265,7 @@ def game():
             )
             shop_choice = input("> ").strip().lower()
             item = "N/A"
-            
+
             if shop_choice == "y":
                 item_bought, money = open_shop(user_money)
                 found_item = False
@@ -278,8 +278,6 @@ def game():
                 else:
                     item = "N/A"
 
-
-                        
             else:
                 c_print(
                     "You ignore the strange merchant lingering in the corner...",
@@ -404,8 +402,8 @@ def tutorial():
     c_print(constants.STARTING_MSG, "cyan")
     tut = input("Would you like a tutorial? (y/n): ").strip().lower()
     if tut == "y":
-        for i in constants.TUTORIAL:
-            c_print(i, "white")
+        for msg in constants.TUTORIAL:
+            c_print(msg, "white")
             time.sleep(0.8)
         confirm = input("Does that sound good? (y/n): ").strip().lower()
         if confirm == "n":
